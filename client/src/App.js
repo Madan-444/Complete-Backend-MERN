@@ -1,10 +1,11 @@
 import React from 'react';
+import Layout from './core/Layout'
 
 function App() {
   return (
-    <div className="App">
-     <h2>Hello from the client side madan</h2>
-    </div>
+    <Layout>
+     <h2>Hello from App </h2>
+    </Layout>
   );
 }
 
