@@ -16,6 +16,7 @@ exports.signup = (req,res)=> {
             })
         }
         const token = jwt.sign({ name,email,password},process.env.JWT_ACCOUNT_ACTIVATION, {expiresIn: '10m'})
+        console.log('MERO EMAIL ADDRESS IS:',email)
         const emailData = {
             from: process.env.EMAIL_FROM,
             to: email,
@@ -30,7 +31,7 @@ exports.signup = (req,res)=> {
         sgMail.send(emailData).then(sent => {
             console.log('Signup email Sent',sent)
             return res.json({
-                message: ` Email has been sent to  ${email}. Follow th link to activate.`
+                message: ` Email has been sent to  ${email}. Follow the link to activate.`
             })
         })
         .catch(err=> {
