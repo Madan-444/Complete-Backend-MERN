@@ -15,8 +15,7 @@ const userSchema = new mongoose.Schema({
         required: true
     }, 
     hashed_password: {
-        type: String,
-        required: true
+        type: String
     },
     salt: {
         type: String
