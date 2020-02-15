@@ -14,6 +14,9 @@ function Layout({ children }) {
       <li class="nav-item active">
         <Link class="nav-link" to='/' style={{color:'white'}}>Home <span class="sr-only">(current)</span></Link>
       </li>
+      <li class="nav-item active">
+        <Link class="nav-link" to='/signup' style={{color:'white'}}>SignUp <span class="sr-only">(current)</span></Link>
+      </li>
       
     </ul>
     <form class="form-inline my-2 my-lg-0">
