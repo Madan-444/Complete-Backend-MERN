@@ -6,7 +6,6 @@
 }
 .hver:hover{
     transform: rotate(10deg);
-    color:black;
     background-color: cornflowerblue;
     box-shadow: 0 3px rgb(255, 255, 255);
 
