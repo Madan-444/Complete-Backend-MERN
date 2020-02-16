@@ -6,6 +6,8 @@ import Signin from './auth/Signin'
 import Activate from './auth/Activate'
 import Private from './core/Private'
 import PrivateRoute from './auth/PrivateRoute'
+import Admin from './core/Admin'
+import AdminRoute from './auth/AdminRoute'
 
 function Routers() {
     return (
@@ -16,6 +18,7 @@ function Routers() {
                 <Route path='/signin' exact component={Signin} />
                 <Route path='/auth/activate/:token' exact component={Activate} />
                 <PrivateRoute path='/private' exact component={Private} />
+                <AdminRoute path='/admin' exact component={Admin} />
             </Switch>
         </BrowserRouter>
     )
