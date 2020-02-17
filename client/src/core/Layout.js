@@ -14,7 +14,7 @@ function Layout({ children,match,history }) {
 
   const nav = () => (
     <nav className="navbar navbar-expand-lg navbar-light bg-dark">
-  <a className="navbar-brand" style={{color:'white'}}>Navbar</a>
+  <span className="navbar-brand" style={{color:'white'}}>Navbar</span>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>
@@ -41,11 +41,11 @@ function Layout({ children,match,history }) {
       )}
       {isAuth() && (
         <li className="nav-item active">
-        <a><span className="nav-link hver" onClick={()=> {
+        <span className="nav-link hver" onClick={()=> {
           signout((next)=> {
             history.push('/')
           })
-        }} style={{color:'white',cursor:'pointer'}}>SignOut <span className="sr-only">(current)</span></span></a>
+        }} style={{color:'white',cursor:'pointer'}}>SignOut <span className="sr-only">(current)</span></span>
       </li>
       )}
       

@@ -1,16 +1,16 @@
 import React,{useState} from 'react'
-import {Link,Redirect} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
 import axios from 'axios'
 import {authenticate,isAuth} from './Helpers'
-import {ToastContainer, toast} from 'react-toastify'
+import {ToastContainer,toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.min.css'
 import Layout from '../core/Layout'
 
 function Signin({history}) {
     const [values,setValues] = useState({
-        name: "Madan",
+        name: "madan",
         email:"mmadan3600@gmail.com",
-        password: 'mypassword',
+        password: '',
         buttonText: 'Submit :)'
     })
     const {email,password,buttonText} = values;
@@ -36,9 +36,8 @@ function Signin({history}) {
             
         })
         .catch(error=> {
-            console.log(error)
-            // console.log('Signup error',error.response.data)
-            // toast.error(error.response.data.error)
+
+            toast.error(error.response.data.error)
         })
     }
 

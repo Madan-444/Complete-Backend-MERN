@@ -1,5 +1,4 @@
 import React,{useState,useEffect } from 'react'
-import {Link,Redirect} from 'react-router-dom'
 import axios from 'axios'
 import jwt from 'jsonwebtoken'
 import {ToastContainer, toast} from 'react-toastify'
@@ -19,10 +18,8 @@ function Activate({match}) {
         if(token){
             setValues({...values,name,token})
         }
-
-        console.log(name)
     },[])
-    const {name,token ,show} = values;
+    const {name,token} = values;
     const clickSubmit= event=> {
         event.preventDefault()
         axios({

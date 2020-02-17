@@ -1,5 +1,6 @@
 const User = require('../model/user')
 const jwt = require('jsonwebtoken')
+const expressJwt = require('express-jwt')
 
 // sendgrid
 const sgMail = require('@sendgrid/mail')
@@ -80,28 +81,50 @@ exports.accountActivation = (req,res)=> {
     }
 }
 
-exports.signin = (req,res)=> {
-    const {email,password} = req.body
-    // Check if user exist
-    User.findOne({email}).exec((err,user)=> {
-        if(err || !user){
+exports.signin = (req, res) => {
+    const { email, password } = req.body;
+    // check if user exist
+    User.findOne({ email }).exec((err, user) => {
+        if (err || !user) {
             return res.status(400).json({
-                error:'User with that email doesnot exist. Please signup'
-            })
+                error: 'User with that email does not exist. Please signup'
+            });
         }
         // authenticate
-        if(!user.authenticate(password)){
+        if (!user.authenticate(password)) {
             return res.status(400).json({
-                error: 'Email and password do not matched'
-            })
+                error: 'Email and password do not match'
+            });
         }
-        // generate a token and send to the client
-        const token = jwt.sign({_id: user._id},process.env.JWT_SECRET, {expiresIn:'7d'})
-        const {_id,name,email,role}= user
+        // generate a token and send to client
+        const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: '7d' });
+        const { _id, name, email, role } = user;
 
         return res.json({
-            token:token,
-            user: {_id,name,email,role}
-        })
-    })
+            token,
+            user: { _id, name, email, role }
+        });
+    });
+};
+
+exports.requireSignin = expressJwt({
+    secret: process.env.JWT_SECRET // req.user._id
+});
+
+exports.adminMiddleware = (req,res,next)=> {
+    User.findById({_id:req.user._id}).exec((err,user)=> {
+        if(err || !user){
+            return res.status(400).json({
+                error:'User not found'
+            })
+        }
+
+        if(user.role ==='admin'){
+            return res.status(400).json({
+                error:'Admin resources.Access denied'
+            })
+        }
+        req.profile = user
+        next();
+    });
 }

@@ -4,7 +4,7 @@ const router = express.Router()
 //import controllers
 
 const {signup} = require('../controller/auth')
-const {signin} = require('../controller/auth')
+const {signin, requireSignin} = require('../controller/auth')
 const {accountActivation} = require('../controller/auth')
 //import validators
 const {userSignupValidator} = require('../validators/auth')
