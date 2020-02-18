@@ -32,6 +32,9 @@ function Layout({ children,match,history }) {
             <li className="nav-item active">
               <Link className="nav-link hver" to='/signin' style={isActive('/signin')}>SignIn <span className="sr-only">(current)</span></Link>
             </li>
+            <li className="nav-item active">
+              <Link className="nav-link hver" to='/slider' style={{color:'white'}}>Slider <span className="sr-only">(current)</span></Link>
+            </li>
             </>
       ) }
       {isAuth() && (

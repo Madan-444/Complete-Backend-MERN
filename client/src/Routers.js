@@ -8,6 +8,7 @@ import Private from './core/Private'
 import PrivateRoute from './auth/PrivateRoute'
 import Admin from './core/Admin'
 import AdminRoute from './auth/AdminRoute'
+import Slider from './core/Slider'
 
 function Routers() {
     return (
@@ -19,6 +20,8 @@ function Routers() {
                 <Route path='/auth/activate/:token' exact component={Activate} />
                 <PrivateRoute path='/private' exact component={Private} />
                 <AdminRoute path='/admin' exact component={Admin} />
+                <Route path='/slider' exact component={Slider} />
+                
             </Switch>
         </BrowserRouter>
     )

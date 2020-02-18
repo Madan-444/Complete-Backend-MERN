@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Layout from './core/Layout'
-import img1 from './core/img1.jpg'
-import img2 from './core/img2.jpg'
-import img3 from './core/img3.jpg'
+import img1 from './core/img_snow_wide1.jpg'
+import img2 from './core/img_nature_wide2.jpg'
+import img3 from './core/img_mountains_wide3.jpg'
 import {
   Carousel,
   CarouselItem,
@@ -78,6 +78,7 @@ function App() {
       <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
     </Carousel>
       </div>
+      
      
      
     </Layout>
