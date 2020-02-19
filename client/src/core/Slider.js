@@ -10,7 +10,7 @@ function Slider() {
         <Layout>
 
         
-{/* <div class="slideshow-container">
+<div class="slideshow-container">
 
 <div class="mySlides fade">
   <div class="numbertext">1 / 3</div>
@@ -40,9 +40,9 @@ function Slider() {
   <span class="dot" onclick="currentSlide(1)"></span> 
   <span class="dot" onclick="currentSlide(2)"></span> 
   <span class="dot" onclick="currentSlide(3)"></span> 
-</div> */}
+</div>
 </Layout>
-<img src= {image3} style={{width:'100%'}}/>
+
 
         </>
     )
