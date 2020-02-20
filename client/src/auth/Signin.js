@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import {Redirect} from 'react-router-dom'
+import {Redirect,Link} from 'react-router-dom'
 import axios from 'axios'
 import {authenticate,isAuth} from './Helpers'
 import {ToastContainer,toast} from 'react-toastify'
@@ -51,6 +51,8 @@ function Signin({history}) {
             <div className="div form-group">
                 <label htmlFor="" >Password </label>
                 <input type='text' className='form-control' value={password} type='password' onChange={handleChange('password')}/> 
+                <Link to='/auth/password/forgot'> <p>Forgot Password ? Clicke here</p> </Link>
+
             </div>
             <div>
                 <button className='btn btn-secondary'  onClick={clickSubmit}> {buttonText} </button>
