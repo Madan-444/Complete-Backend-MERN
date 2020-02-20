@@ -5,6 +5,7 @@ import {authenticate,isAuth} from './Helpers'
 import {ToastContainer,toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.min.css'
 import Layout from '../core/Layout'
+import Google from './Google'
 
 function Signin({history}) {
     const [values,setValues] = useState({
@@ -16,6 +17,11 @@ function Signin({history}) {
     const {email,password,buttonText} = values;
     const handleChange= (name)=> (event)=> {
         setValues({...values, [name]: event.target.value})
+    }
+    const informParent = response => {
+       authenticate(response, ()=> {
+        isAuth() && isAuth().role === 'admin'? history.push('/admin') : history.push('/private')
+       });
     }
     const clickSubmit= event=> {
         event.preventDefault()
@@ -42,7 +48,9 @@ function Signin({history}) {
     }
 
     const signinForm = ()=> (
+
         <form>
+             <Google informParent = {informParent} />
 
             <div className="div form-group">
                 <label htmlFor=""> Email</label>
@@ -65,8 +73,9 @@ function Signin({history}) {
             <div className='col-md-6 offset-md-3'>
             <ToastContainer />
             { isAuth() ? <Redirect to= '/' /> : null}
-            <h1 className='p-5 text-center'>SignIn</h1>
+            <h1 className='p-5 text-center'>SignIn </h1>
             {signinForm()}
+           
 
             </div>
         </Layout>
