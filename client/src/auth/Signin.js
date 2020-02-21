@@ -6,6 +6,7 @@ import {ToastContainer,toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.min.css'
 import Layout from '../core/Layout'
 import Google from './Google'
+import Facebook from './Facebook'
 
 function Signin({history}) {
     const [values,setValues] = useState({
@@ -50,8 +51,7 @@ function Signin({history}) {
     const signinForm = ()=> (
 
         <form>
-             <Google informParent = {informParent} />
-
+            
             <div className="div form-group">
                 <label htmlFor=""> Email</label>
                 <input type='text' className='form-control' value={email} onChange={handleChange('email')}/> 
@@ -72,6 +72,8 @@ function Signin({history}) {
             
             <div className='col-md-6 offset-md-3'>
             <ToastContainer />
+            <Google informParent = {informParent} />
+             <Facebook informParent = {informParent} />
             { isAuth() ? <Redirect to= '/' /> : null}
             <h1 className='p-5 text-center'>SignIn </h1>
             {signinForm()}
